@@ -7,7 +7,7 @@ $contasCorrentes = [
         'titular' => 'Maria',
         'saldo' => 10000
     ],
-    '123.456.789-11' => [
+    '123.456.689-11' => [
         'titular' => 'Alberto',
         'saldo' => 300
     ],
@@ -29,15 +29,19 @@ $contasCorrentes['123.456.789-10'] = sacar(
     500
 );
 
-$contasCorrentes['123.456.789-11'] = sacar(
-    $contasCorrentes['123.456.789-11'], 
+$contasCorrentes['123.456.689-11'] = sacar(
+    $contasCorrentes['123.456.689-11'], 
     200
 );
 
+unset($contasCorrentes['123.456.689-11']);
+
+titularComLetrasMaiusculas($contasCorrentes['123.256.789-12']);
 
 
 foreach ($contasCorrentes as $cpf => $conta) {
+    list('titular' => $titular, 'saldo' => $saldo) = $conta;
     exibeMensagem(
-        "$cpf {$conta['titular']} {$conta['saldo']}"
+        "$cpf $titular $saldo"
     );
 }
